@@ -22,21 +22,19 @@ struct BUTTON_STATE {
 	int y;
 } ButtonStates[3];
 
-int RotateY = 45;
+float RotateY = 0;
+float RotateX = 0;
+float TranslateX = 0;
 
 /*
  * GLUT callbacks:
  */
 static void update_fade_factor(void)
 {
+	glutPostRedisplay();
 }
 
-//static void drawBox()
-//{
-//	
-//}
-
-void DrawCube()
+static void DrawCube()
 {
 	glBegin(GL_QUADS);
 		glVertex3f(0.0f, 0.0f, 0.0f);	// top face
@@ -66,7 +64,7 @@ void DrawCube()
 	glEnd();
 }
 
-static void SetupProjection()
+static void UpdateProjection()
 {
 	glViewport(0, 0, Width, Height);		// reset the viewport to new dimensions
 	
@@ -89,6 +87,8 @@ static void render(void)
 	
     glTranslatef(0, 0, -10);
    	glRotatef(RotateY, 0.0, 1.0, 0);
+	glRotatef(RotateX, 1.0, 0, 0);
+	glTranslatef(0.5, 0.5, 0.5);
    
     //glPointSize(5.0);
     //glEnable(GL_POINT_SMOOTH);
@@ -112,8 +112,12 @@ void motion (int x, int y)
 	if (ButtonStates[LEFT].pressed) {
 		glMatrixMode(GL_MODELVIEW);
 		int dx = ButtonStates[LEFT].x - x;
-		RotateY += dx;
-		printf("Moved x: %d, RotateY: %d\n", dx, RotateY);
+		int dy = ButtonStates[LEFT].y - y;
+		RotateY += (dx * -0.5);
+		if (RotateY >= 360) RotateY -= 360;
+		RotateX += (dy * -0.5);
+		if (RotateX >= 360) RotateX -= 360;
+		printf("Moved x: %d, RotateY: %f, TranslateX: %f\n", dx, RotateY, TranslateX);
 		ButtonStates[LEFT].x = x;
 		ButtonStates[LEFT].y = y;
 	}
@@ -185,7 +189,7 @@ int main(int argc, char** argv)
 	glDepthFunc(GL_LEQUAL);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	
-	SetupProjection();
+	UpdateProjection();
 
     glutMainLoop();
     return 0;

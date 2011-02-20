@@ -1,0 +1,149 @@
+// !$*UTF8*$!
+{
+	08FB7793FE84155DC02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = CB79F8211311D67E000570F4 /* FFTVisual */;
+		activeTarget = 8DD76F620486A84900D96B5E /* FFTVisual */;
+		addToTargets = (
+			8DD76F620486A84900D96B5E /* FFTVisual */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = CB79F8261311D68B000570F4 /* Code sense */;
+		executables = (
+			CB79F8211311D67E000570F4 /* FFTVisual */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = 1;
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					834,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 319937342;
+			PBXWorkspaceStateSaveDate = 319937342;
+		};
+		perUserProjectItems = {
+			CB1E947F1311DB43001D1D3E /* PBXTextBookmark */ = CB1E947F1311DB43001D1D3E /* PBXTextBookmark */;
+			CB79F8351311D6D1000570F4 /* PBXTextBookmark */ = CB79F8351311D6D1000570F4 /* PBXTextBookmark */;
+			CB79F8371311D6D1000570F4 /* PBXTextBookmark */ = CB79F8371311D6D1000570F4 /* PBXTextBookmark */;
+			CB79F8801311DB30000570F4 /* PBXTextBookmark */ = CB79F8801311DB30000570F4 /* PBXTextBookmark */;
+		};
+		sourceControlManager = CB79F8251311D68B000570F4 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8DD76F620486A84900D96B5E /* FFTVisual */ = {
+		activeExec = 0;
+		executables = (
+			CB79F8211311D67E000570F4 /* FFTVisual */,
+		);
+	};
+	C6859E8B029090EE04C91782 /* FFTVisual.1 */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {635, 1168}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1117}";
+		};
+	};
+	CB1E947F1311DB43001D1D3E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CB79F8271311D69C000570F4 /* fft_visual.cpp */;
+		name = "fft_visual.cpp: 118";
+		rLen = 0;
+		rLoc = 2717;
+		rType = 0;
+		vrLen = 1150;
+		vrLoc = 2283;
+	};
+	CB79F8211311D67E000570F4 /* FFTVisual */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = FFTVisual;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	CB79F8251311D68B000570F4 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	CB79F8261311D68B000570F4 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CB79F8271311D69C000570F4 /* fft_visual.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1012, 3088}}";
+			sepNavSelRange = "{2717, 0}";
+			sepNavVisRange = "{2283, 1150}";
+		};
+	};
+	CB79F8351311D6D1000570F4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6859E8B029090EE04C91782 /* FFTVisual.1 */;
+		name = "FFTVisual.1: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1117;
+		vrLoc = 0;
+	};
+	CB79F8371311D6D1000570F4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C6859E8B029090EE04C91782 /* FFTVisual.1 */;
+		name = "FFTVisual.1: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1117;
+		vrLoc = 0;
+	};
+	CB79F8801311DB30000570F4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CB79F8271311D69C000570F4 /* fft_visual.cpp */;
+		name = "fft_visual.cpp: 118";
+		rLen = 0;
+		rLoc = 2717;
+		rType = 0;
+		vrLen = 1168;
+		vrLoc = 2283;
+	};
+}
