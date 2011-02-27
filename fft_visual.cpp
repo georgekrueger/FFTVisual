@@ -6,8 +6,12 @@
 #endif
 #include <stdio.h>
 
+#include "../PBRSynth/Lib/wavfile.h"
+#include "Audio/Audio.h"
+
 static const int Width = 512;
 static const int Height = 512;
+int Time = 0;
 
 typedef enum
 {
@@ -25,42 +29,67 @@ struct BUTTON_STATE {
 float RotateY = 0;
 float RotateX = 0;
 float TranslateX = 0;
+float CubeHeight = 0;
 
 /*
  * GLUT callbacks:
  */
-static void update_fade_factor(void)
+static void update(void)
 {
+	int ElapsedTime = 0;
+	if (Time > 0) {
+		ElapsedTime = glutGet(GLUT_ELAPSED_TIME) - Time;
+	}
+	Time = glutGet(GLUT_ELAPSED_TIME);
+	
+	CubeHeight += ElapsedTime * 0.001;
+	if (CubeHeight >= 1) CubeHeight = 0;
+	
 	glutPostRedisplay();
 }
 
 static void DrawCube()
 {
 	glBegin(GL_QUADS);
-		glVertex3f(0.0f, 0.0f, 0.0f);	// top face
+		glVertex3f(0.0f, CubeHeight, 0.0f);	// top face
+		glVertex3f(0.0f, CubeHeight, -1.0f);
+		glVertex3f(-1.0f, CubeHeight, -1.0f);
+		glVertex3f(-1.0f, CubeHeight, 0.0f);
+		glVertex3f(0.0f, CubeHeight, 0.0f);	// front face
+		glVertex3f(-1.0f, CubeHeight, 0.0f);
+		glVertex3f(-1.0f, 0.0f, 0.0f);
+		glVertex3f(0.0f, 0.0f, 0.0f);
+		glVertex3f(0.0f, CubeHeight, 0.0f);	// right face
+		glVertex3f(0.0f, 0.0f, 0.0f);
+		glVertex3f(0.0f, 0.0f, -1.0f);
+		glVertex3f(0.0f, CubeHeight, -1.0f);
+		glVertex3f(-1.0f, CubeHeight, 0.0f);	// left face
+		glVertex3f(-1.0f, CubeHeight, -1.0f);
+		glVertex3f(-1.0f, 0.0f, -1.0f);
+		glVertex3f(-1.0f, 0.0f, 0.0f);
+		glVertex3f(0.0f, 0.0f, 0.0f);	// bottom face
 		glVertex3f(0.0f, 0.0f, -1.0f);
 		glVertex3f(-1.0f, 0.0f, -1.0f);
 		glVertex3f(-1.0f, 0.0f, 0.0f);
-		glVertex3f(0.0f, 0.0f, 0.0f);	// front face
-		glVertex3f(-1.0f, 0.0f, 0.0f);
-		glVertex3f(-1.0f, -1.0f, 0.0f);
-		glVertex3f(0.0f, -1.0f, 0.0f);
-		glVertex3f(0.0f, 0.0f, 0.0f);	// right face
-		glVertex3f(0.0f, -1.0f, 0.0f);
-		glVertex3f(0.0f, -1.0f, -1.0f);
+		glVertex3f(0.0f, CubeHeight, -1.0f);	// back face
+		glVertex3f(-1.0f, CubeHeight, -1.0f);
+		glVertex3f(-1.0f, 0.0f, -1.0f);
 		glVertex3f(0.0f, 0.0f, -1.0f);
-		glVertex3f(-1.0f, 0.0f, 0.0f);	// left face
-		glVertex3f(-1.0f, 0.0f, -1.0f);
-		glVertex3f(-1.0f, -1.0f, -1.0f);
-		glVertex3f(-1.0f, -1.0f, 0.0f);
-		glVertex3f(0.0f, -1.0f, 0.0f);	// bottom face
-		glVertex3f(0.0f, -1.0f, -1.0f);
-		glVertex3f(-1.0f, -1.0f, -1.0f);
-		glVertex3f(-1.0f, -1.0f, 0.0f);
-		glVertex3f(0.0f, 0.0f, -1.0f);	// back face
-		glVertex3f(-1.0f, 0.0f, -1.0f);
-		glVertex3f(-1.0f, -1.0f, -1.0f);
-		glVertex3f(0.0f, -1.0f, -1.0f);
+	glEnd();
+}
+
+static void DrawAxis()
+{
+	glBegin(GL_LINES);
+	glColor3f(1, 0, 0);
+	glVertex3f(0, 0, 0);
+	glVertex3f(8, 0, 0);
+	glColor3f(0, 1, 0);
+	glVertex3f(0, 0, 0);
+	glVertex3f(0, 8, 0);
+	glColor3f(0, 0, 8);
+	glVertex3f(0, 0, 0);
+	glVertex3f(0, 0, 8);
 	glEnd();
 }
 
@@ -102,6 +131,7 @@ static void render(void)
     //glEnd();
     
     DrawCube();
+	DrawAxis();
 
     glutSwapBuffers();
 }
@@ -121,33 +151,6 @@ void motion (int x, int y)
 		ButtonStates[LEFT].x = x;
 		ButtonStates[LEFT].y = y;
 	}
-
-  /*const double factor = 20.0; 
-  bool changed = false; 
-
-  // process UI events 
-  if (buttons[GLUT_LEFT_BUTTON] == GLUT_DOWN)  
-    // rotate camera orientation using left mouse button 
-    camera.orbit(cur_x, cur_y, x, y, 
-                 glutGet(GLUT_WINDOW_WIDTH), 
-                 glutGet(GLUT_WINDOW_HEIGHT)); 
-    changed = true; 
-   
-  if (buttons[GLUT_MIDDLE_BUTTON] == GLUT_DOWN)  
-    // track camera forward and back using middle mouse button 
-    camera.move(0, 0, (y - cur_y)/factor); 
-    changed = true; 
-   
-  if (buttons[GLUT_RIGHT_BUTTON] == GLUT_DOWN)  
-    // pan camera using right mouse button 
-    camera.move((x - cur_x)/factor, (cur_y - y)/factor, 0); 
-    changed = true; 
-   
-
-  // update everything 
-  if (changed)  
-    setup_view(); 
-    glutPostRedisplay(); */
 }   
 
 
@@ -174,12 +177,17 @@ void mouse (int button, int state, int x, int y)
 int main(int argc, char** argv)
 {
 	printf("main\n");
+	
+	Audio_Init(44100, 64);
+	AudioHandle Handle;
+	Audio_LoadFile("../../../SynthGuitar.wav", &Handle);
+	Audio_PlayHandle(&Handle, 1.0);
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
     glutInitWindowSize(Width, Height);
     glutCreateWindow("Hello World");
-    glutIdleFunc(&update_fade_factor);
+    glutIdleFunc(&update);
     glutDisplayFunc(&render);
     glutMouseFunc(mouse); 
 	glutMotionFunc(motion); 
@@ -192,6 +200,8 @@ int main(int argc, char** argv)
 	UpdateProjection();
 
     glutMainLoop();
+	
+	Audio_Deinit();
     return 0;
 }
 

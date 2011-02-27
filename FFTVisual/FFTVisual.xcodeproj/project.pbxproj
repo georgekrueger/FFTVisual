@@ -11,6 +11,15 @@
 		CB79F8281311D69C000570F4 /* fft_visual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB79F8271311D69C000570F4 /* fft_visual.cpp */; };
 		CB79F82A1311D6B0000570F4 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB79F8291311D6B0000570F4 /* GLUT.framework */; };
 		CB79F82E1311D6C7000570F4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB79F82D1311D6C7000570F4 /* OpenGL.framework */; };
+		CB8431521319C8BD007A0AEE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB84314E1319C8BC007A0AEE /* AudioToolbox.framework */; };
+		CB8431531319C8BD007A0AEE /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB84314F1319C8BD007A0AEE /* AudioUnit.framework */; };
+		CB8431541319C8BD007A0AEE /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8431501319C8BD007A0AEE /* CoreAudio.framework */; };
+		CB8431551319C8BD007A0AEE /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8431511319C8BD007A0AEE /* CoreAudioKit.framework */; };
+		CB8431751319C94E007A0AEE /* libportaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8431741319C94E007A0AEE /* libportaudio.a */; };
+		CB8434A21319C994007A0AEE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8434A01319C994007A0AEE /* CoreFoundation.framework */; };
+		CB8434A31319C994007A0AEE /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8434A11319C994007A0AEE /* CoreMIDI.framework */; };
+		CB9693A41319A13500B457D4 /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB96939F1319A13500B457D4 /* Audio.cpp */; };
+		CB9693A51319A13500B457D4 /* WavFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB9693A21319A13500B457D4 /* WavFile.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +41,18 @@
 		CB79F8271311D69C000570F4 /* fft_visual.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fft_visual.cpp; path = ../fft_visual.cpp; sourceTree = SOURCE_ROOT; };
 		CB79F8291311D6B0000570F4 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		CB79F82D1311D6C7000570F4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		CB84314E1319C8BC007A0AEE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CB84314F1319C8BD007A0AEE /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		CB8431501319C8BD007A0AEE /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		CB8431511319C8BD007A0AEE /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		CB8431741319C94E007A0AEE /* libportaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libportaudio.a; path = ../libportaudio.a; sourceTree = SOURCE_ROOT; };
+		CB8434A01319C994007A0AEE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		CB8434A11319C994007A0AEE /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		CB96939F1319A13500B457D4 /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
+		CB9693A01319A13500B457D4 /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
+		CB9693A11319A13500B457D4 /* AudioDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDefines.h; sourceTree = "<group>"; };
+		CB9693A21319A13500B457D4 /* WavFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WavFile.cpp; sourceTree = "<group>"; };
+		CB9693A31319A13500B457D4 /* WavFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WavFile.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +62,13 @@
 			files = (
 				CB79F82A1311D6B0000570F4 /* GLUT.framework in Frameworks */,
 				CB79F82E1311D6C7000570F4 /* OpenGL.framework in Frameworks */,
+				CB8431521319C8BD007A0AEE /* AudioToolbox.framework in Frameworks */,
+				CB8431531319C8BD007A0AEE /* AudioUnit.framework in Frameworks */,
+				CB8431541319C8BD007A0AEE /* CoreAudio.framework in Frameworks */,
+				CB8431551319C8BD007A0AEE /* CoreAudioKit.framework in Frameworks */,
+				CB8431751319C94E007A0AEE /* libportaudio.a in Frameworks */,
+				CB8434A21319C994007A0AEE /* CoreFoundation.framework in Frameworks */,
+				CB8434A31319C994007A0AEE /* CoreMIDI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +78,7 @@
 		08FB7794FE84155DC02AAC07 /* FFTVisual */ = {
 			isa = PBXGroup;
 			children = (
+				CB84350A1319D642007A0AEE /* Libs */,
 				08FB7795FE84155DC02AAC07 /* Source */,
 				C6859E8C029090F304C91782 /* Documentation */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
@@ -60,8 +89,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				CB79F82D1311D6C7000570F4 /* OpenGL.framework */,
-				CB79F8291311D6B0000570F4 /* GLUT.framework */,
+				CB96939E1319A13500B457D4 /* Audio */,
 				CB79F8271311D69C000570F4 /* fft_visual.cpp */,
 			);
 			name = Source;
@@ -82,6 +110,35 @@
 			);
 			name = Documentation;
 			sourceTree = "<group>";
+		};
+		CB84350A1319D642007A0AEE /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				CB79F82D1311D6C7000570F4 /* OpenGL.framework */,
+				CB79F8291311D6B0000570F4 /* GLUT.framework */,
+				CB8431741319C94E007A0AEE /* libportaudio.a */,
+				CB8434A01319C994007A0AEE /* CoreFoundation.framework */,
+				CB8434A11319C994007A0AEE /* CoreMIDI.framework */,
+				CB84314E1319C8BC007A0AEE /* AudioToolbox.framework */,
+				CB84314F1319C8BD007A0AEE /* AudioUnit.framework */,
+				CB8431501319C8BD007A0AEE /* CoreAudio.framework */,
+				CB8431511319C8BD007A0AEE /* CoreAudioKit.framework */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
+		CB96939E1319A13500B457D4 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				CB96939F1319A13500B457D4 /* Audio.cpp */,
+				CB9693A01319A13500B457D4 /* Audio.h */,
+				CB9693A11319A13500B457D4 /* AudioDefines.h */,
+				CB9693A21319A13500B457D4 /* WavFile.cpp */,
+				CB9693A31319A13500B457D4 /* WavFile.h */,
+			);
+			name = Audio;
+			path = ../Audio;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -127,6 +184,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB79F8281311D69C000570F4 /* fft_visual.cpp in Sources */,
+				CB9693A41319A13500B457D4 /* Audio.cpp in Sources */,
+				CB9693A51319A13500B457D4 /* WavFile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +206,13 @@
 					"_GLIBCXX_DEBUG_PEDANTIC=1",
 				);
 				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../PbrSynth/Lib/build/Debug\"",
+					"\"$(SRCROOT)/../../portaudio/lib\"",
+					"\"$(SRCROOT)/../../portaudio/portaudio/build/Debug\"",
+					"\"$(SRCROOT)/..\"",
+				);
 				PRODUCT_NAME = FFTVisual;
 			};
 			name = Debug;
@@ -158,6 +224,13 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../PbrSynth/Lib/build/Debug\"",
+					"\"$(SRCROOT)/../../portaudio/lib\"",
+					"\"$(SRCROOT)/../../portaudio/portaudio/build/Debug\"",
+					"\"$(SRCROOT)/..\"",
+				);
 				PRODUCT_NAME = FFTVisual;
 			};
 			name = Release;
@@ -183,6 +256,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "~/Code/portaudio/include";
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 			};
