@@ -17,6 +17,7 @@
 #define MIN(a, b) ( (a) < (b) ? a : b )
 
 static const uint AUDIO_MAX_SIMULTANEOUS_PLAYS = 10; // max number of audio files that can be played at a time
+static const uint AUDIO_NUM_OUTPUT_CHANNELS = 2;
 
 pthread_mutex_t AudioMutex;
 
@@ -25,6 +26,7 @@ struct AudioPlayHead
 	bool               Active;
 	const AudioHandle* Handle;
 	float              Volume;
+	bool               Loop;
 	uint               Position;
 };
 
@@ -60,7 +62,7 @@ bool Audio_Init(uint SampleRate, uint FrameBufferSize)
 	if (err != paNoError) { assert(false); return false; }
 	
 	outputParameters.device = Pa_GetDefaultOutputDevice(); /* default output device */
-    outputParameters.channelCount = 2;       /* stereo output */
+    outputParameters.channelCount = AUDIO_NUM_OUTPUT_CHANNELS;       /* stereo output */
     outputParameters.sampleFormat = paFloat32; /* 32 bit floating point output */
     outputParameters.suggestedLatency = Pa_GetDeviceInfo( outputParameters.device )->defaultLowOutputLatency;
     outputParameters.hostApiSpecificStreamInfo = NULL;
@@ -109,7 +111,7 @@ bool Audio_ReleaseHandle(AudioHandle* Handle)
 	return true;
 }
 
-bool Audio_PlayHandle(const AudioHandle* Handle, float Volume)
+bool Audio_PlayHandle(const AudioHandle* Handle, float Volume, bool Loop)
 {
 	// find the first open spot to add play head
 	pthread_mutex_lock(&AudioMutex);
@@ -119,6 +121,7 @@ bool Audio_PlayHandle(const AudioHandle* Handle, float Volume)
 			AudioData.PlayHeads[i].Active = true;
 			AudioData.PlayHeads[i].Handle = Handle;
 			AudioData.PlayHeads[i].Volume = Volume;
+			AudioData.PlayHeads[i].Loop = Loop;
 			AudioData.PlayHeads[i].Position = 0;
 			Added = true;
 			break;
@@ -135,17 +138,40 @@ bool Audio_PlayHandle(const AudioHandle* Handle, float Volume)
 static AudioRenderCode RenderPlayHead(AudioPlayHead* PlayHead, AudioSample* OutBuffer, uint NumFrames)
 {
 	AudioSample *Out = OutBuffer;
-	uint NumSamplesInFile = PlayHead->Handle->NumFrames * PlayHead->Handle->NumChannels;
-	uint NumSamplesLeft = NumSamplesInFile - PlayHead->Position;
-	uint NumSamplesToProcess = MIN(NumFrames, NumSamplesLeft);
+	uint NumFramesLeftInHandle = PlayHead->Handle->NumFrames - ( PlayHead->Position / PlayHead->Handle->NumChannels);
+	uint NumFramesToProcess = (PlayHead->Loop ? NumFrames : MIN(NumFrames, NumFramesLeftInHandle));
+	uint NumSamplesInHandle = PlayHead->Handle->NumFrames * PlayHead->Handle->NumChannels;
 	
-	for (uint i=0; i<NumSamplesToProcess; i++) {
-		*Out = PlayHead->Handle->Buffer[PlayHead->Position] * PlayHead->Volume;
-		Out++;
-		PlayHead->Position++;
+	if (AUDIO_NUM_OUTPUT_CHANNELS == 2) {
+		if (PlayHead->Handle->NumChannels == 1) {
+			for (uint i=0; i<NumFramesToProcess; i++) {
+				AudioSample Sample = PlayHead->Handle->Buffer[PlayHead->Position] * PlayHead->Volume;
+				Out[0] += Sample;
+				Out[1] += Sample;
+				Out += 2;
+				PlayHead->Position++;
+				if (PlayHead->Position >= NumSamplesInHandle) PlayHead->Position = 0; // wrap around play head
+			}
+		}
+		else if (PlayHead->Handle->NumChannels == 2) {
+			for (uint i=0; i<NumFramesToProcess; i++) {
+				Out[0] += PlayHead->Handle->Buffer[PlayHead->Position] * PlayHead->Volume;
+				PlayHead->Position++;
+				if (PlayHead->Position >= NumSamplesInHandle) PlayHead->Position = 0; // wrap around play head
+				
+				Out[1] += PlayHead->Handle->Buffer[PlayHead->Position] * PlayHead->Volume;
+				PlayHead->Position++;
+				if (PlayHead->Position >= NumSamplesInHandle) PlayHead->Position = 0; // wrap around play head
+				
+				Out += 2;
+			}
+		}
+	}
+	else {
+		assert(false); // mono outut not supported
 	}
 	
-	return ( NumSamplesLeft <= NumFrames ? DONE : RENDERING );
+	return ( !PlayHead->Loop && NumFramesLeftInHandle <= NumFrames ? DONE : RENDERING );
 }
 
 static int PortAudioCallback( const void *inputBuffer, void *outputBuffer,
@@ -155,7 +181,7 @@ static int PortAudioCallback( const void *inputBuffer, void *outputBuffer,
 							 void *userData )
 {
 	// clear output buffer
-	memset(outputBuffer, 0, sizeof(AudioSample) * framesPerBuffer);
+	memset(outputBuffer, 0, sizeof(AudioSample) * framesPerBuffer * AUDIO_NUM_OUTPUT_CHANNELS);
 	
 	pthread_mutex_lock(&AudioMutex);
 	

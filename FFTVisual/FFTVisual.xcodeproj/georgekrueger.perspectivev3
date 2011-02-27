@@ -315,7 +315,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>CB79F8331311D6D1000570F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Audio.cpp</string>
+								<string>fft_visual.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -323,11 +323,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>CB79F8341311D6D1000570F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Audio.cpp</string>
+										<string>fft_visual.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CB8435BB1319D930007A0AEE</string>
+										<string>CB71DD14131AD9D300F4B180</string>
 										<key>history</key>
 										<array>
 											<string>CB79F8351311D6D1000570F4</string>
@@ -339,12 +339,11 @@
 											<string>CB9693BF1319C28B00B457D4</string>
 											<string>CB9693C01319C28B00B457D4</string>
 											<string>CB9693C11319C28B00B457D4</string>
-											<string>CB9693C31319C28B00B457D4</string>
-											<string>CB9693C61319C28B00B457D4</string>
 											<string>CB9694501319C33A00B457D4</string>
 											<string>CB9694B31319C59000B457D4</string>
-											<string>CB8435A81319D80F007A0AEE</string>
-											<string>CB8435B91319D92D007A0AEE</string>
+											<string>CB71DCFC131AD75A00F4B180</string>
+											<string>CB71DCFD131AD75A00F4B180</string>
+											<string>CB71DD13131AD9C600F4B180</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -361,16 +360,13 @@
 											<string>CB9693CF1319C28B00B457D4</string>
 											<string>CB9693E81319C28B00B457D4</string>
 											<string>CB9693ED1319C28B00B457D4</string>
-											<string>CB9694001319C28B00B457D4</string>
 											<string>CB96944D1319C33900B457D4</string>
-											<string>CB8434DF1319D26D007A0AEE</string>
-											<string>CB8434F21319D5AD007A0AEE</string>
-											<string>CB84358C1319D7C3007A0AEE</string>
-											<string>CB84358D1319D7C3007A0AEE</string>
-											<string>CB84358E1319D7C3007A0AEE</string>
-											<string>CB84358F1319D7C3007A0AEE</string>
-											<string>CB84359B1319D7EF007A0AEE</string>
-											<string>CB8435AA1319D80F007A0AEE</string>
+											<string>CB71DCFF131AD75A00F4B180</string>
+											<string>CB71DD00131AD75A00F4B180</string>
+											<string>CB71DD01131AD75A00F4B180</string>
+											<string>CB71DD02131AD75A00F4B180</string>
+											<string>CB71DD03131AD75A00F4B180</string>
+											<string>CB71DD04131AD75A00F4B180</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -410,8 +406,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1042, -27}}</string>
-										<key>RubberWindowFrame</key>
-										<string>1 59 1280 719 0 0 1280 778 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -466,6 +460,8 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1042, -27}}</string>
+										<key>RubberWindowFrame</key>
+										<string>1 59 1280 719 0 0 1280 778 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -493,11 +489,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CB8431091319C731007A0AEE</string>
+				<string>CB71DCD6131ACDA800F4B180</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>CB84310A1319C731007A0AEE</string>
+				<string>CB71DCD7131ACDA800F4B180</string>
 				<string>CB79F8331311D6D1000570F4</string>
-				<string>CB84310B1319C731007A0AEE</string>
+				<string>CB71DCD8131ACDA800F4B180</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -570,8 +566,8 @@
 								<string>yes</string>
 								<key>sizes</key>
 								<array>
-									<string>{{0, 0}, {625, 305}}</string>
-									<string>{{625, 0}, {655, 305}}</string>
+									<string>{{0, 0}, {620, 212}}</string>
+									<string>{{620, 0}, {660, 212}}</string>
 								</array>
 							</dict>
 							<key>VerticalSplitView</key>
@@ -586,8 +582,8 @@
 								<string>yes</string>
 								<key>sizes</key>
 								<array>
-									<string>{{0, 0}, {1280, 305}}</string>
-									<string>{{0, 305}, {1280, 243}}</string>
+									<string>{{0, 0}, {1280, 212}}</string>
+									<string>{{0, 212}, {1280, 336}}</string>
 								</array>
 							</dict>
 						</dict>
@@ -617,10 +613,10 @@
 								<string>Value</string>
 								<real>85</real>
 								<string>Summary</string>
-								<real>406</real>
+								<real>411</real>
 							</array>
 							<key>Frame</key>
-							<string>{{625, 0}, {655, 305}}</string>
+							<string>{{620, 0}, {660, 212}}</string>
 						</dict>
 					</dict>
 					<key>Module</key>
@@ -644,13 +640,13 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CB84310C1319C731007A0AEE</string>
+				<string>CB71DCD9131ACDA800F4B180</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>CB84310D1319C731007A0AEE</string>
-				<string>CB84310E1319C731007A0AEE</string>
-				<string>CB84310F1319C731007A0AEE</string>
-				<string>CB8431101319C731007A0AEE</string>
+				<string>CB71DCDA131ACDA800F4B180</string>
+				<string>CB71DCDB131ACDA800F4B180</string>
+				<string>CB71DCDC131ACDA800F4B180</string>
+				<string>CB71DCDD131ACDA800F4B180</string>
 				<string>CB79F8331311D6D1000570F4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -681,9 +677,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>CB8431121319C731007A0AEE</string>
-		<string>CB8431131319C731007A0AEE</string>
-		<string>/Users/georgekrueger/Code/fft_visual/FFTVisual/FFTVisual.xcodeproj</string>
+		<string>CB71DCF2131AD3A000F4B180</string>
+		<string>CB71DCF3131AD3A000F4B180</string>
+		<string>/Users/georgekrueger/Code/FFtVisual/FFTVisual/FFTVisual.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>1 59 1280 719 0 0 1280 778 </string>

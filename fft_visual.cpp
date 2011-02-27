@@ -170,18 +170,15 @@ void mouse (int button, int state, int x, int y)
 	}
 }
 
-
 /*
  * Entry point
  */
 int main(int argc, char** argv)
-{
-	printf("main\n");
-	
+{	
 	Audio_Init(44100, 64);
 	AudioHandle Handle;
 	Audio_LoadFile("../../../SynthGuitar.wav", &Handle);
-	Audio_PlayHandle(&Handle, 1.0);
+	Audio_PlayHandle(&Handle, 1.0, true);
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
@@ -202,6 +199,7 @@ int main(int argc, char** argv)
     glutMainLoop();
 	
 	Audio_Deinit();
+	
     return 0;
 }
 

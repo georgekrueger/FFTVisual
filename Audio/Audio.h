@@ -23,6 +23,6 @@ bool Audio_Init(uint SampleRate, uint FrameBufferSize);
 bool Audio_Deinit();
 bool Audio_LoadFile(const char* InAudioFile, AudioHandle* OutHandle);
 bool Audio_ReleaseHandle(AudioHandle* Handle);
-bool Audio_PlayHandle(const AudioHandle* Handle, float Volume);
+bool Audio_PlayHandle(const AudioHandle* Handle, float Volume, bool Loop);
 
 #endif
